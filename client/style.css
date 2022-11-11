@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+
+}
+#top {
+    display: flex;
+    justify-content: center;
+}
+#mainlist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+#compOrFortuneList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+button {
+    margin: 10px;
+}
+p {
+    margin: 10px;;
+}
+#buttons {
+    display: flex;
+    justify-content: center;
+}
