@@ -62,12 +62,6 @@ const editFortunes = () => {
     axios.get("http://localhost:4000/api/fortunesList/")
     .then(res => {
         let data = res.data;
-        let h1 = document.createElement('h1')
-        h1.textContent = "Edit The fortunes Here"
-        editList.appendChild(h1)
-        let deleteFortuneBtn = document.createElement('button')
-        deleteFortuneBtn.textContent = "delete all fortunes"
-        editList.appendChild(deleteFortuneBtn) 
         for(let i = 0; i < data.length; i++) {
             // console.log(data)
             let fortuneSent = document.createElement('p')
@@ -81,18 +75,26 @@ const editFortunes = () => {
     })
     
     
+    let h1 = document.createElement('h1')
+    editList.appendChild(h1)
+    h1.textContent = "Edit The fortunes Here"
+    let deleteFortuneBtn = document.createElement('button')
+    deleteFortuneBtn.textContent = "delete all fortunes"
+    editList.appendChild(deleteFortuneBtn) 
     
+    const deleteFortune = () => {
+        axios.delete("http://localhost:4000/api/fortunes/").then (res => {
+            // console.log(res.data)
+           data = res.data
+          for (let i = 0; i < data.length * 2; i ++) {
+            editList.removeChild(editList.lastElementChild)
+          }
+            
+        })
+        editList.removeChild(h1)
+        editList.removeChild(deleteFortuneBtn)
+        alert('All Fortunes Have been Deleted')
 }
-const deleteFortune = () => {
-    axios.delete("http://localhost:4000/api/fortunes/").then (res => {
-        console.log(res.data)
-       data = res.data
-      for (let i = 0; i < data.length * 2; i ++) {
-        editList.removeChild(editList.lastElementChild)
-      }
-        
-    })
-    alert('All Fortunes Have been Deleted')
 }
 
 
