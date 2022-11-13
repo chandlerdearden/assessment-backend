@@ -1,6 +1,5 @@
 let fortunes = ["Don’t hold onto things that require a tight grip.", "Do it scared.", "Look how far you've come.", "Don't let yesterday take up too much of today.","There is no such thing as ugly."]
 
-
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -34,6 +33,11 @@ module.exports = {
 
     },
     deleteFortunes: (req, res) => {
+        res.status(200).send(fortunes)
+    },
+    repalceFortune: (req, res) => {
+        console.log(req.body)
+        fortunes.splice(req.params.id, 1, req.body.switchFortune)
         res.status(200).send(fortunes)
     }
 }

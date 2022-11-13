@@ -5,7 +5,9 @@ const compOrFortuneList = document.querySelector("#compOrFortuneList")
 const submitButton = document.querySelector("#submitBtn")
 const editFortunesBtn = document.querySelector('#editFortunes')
 const editList = document.querySelector('#editList')
-
+const repFortune = document.getElementById("repFortune")
+const fortuneId = document.getElementById("fortuneId")
+const replaceFortuneBtn = document.querySelector("#replaceFortuneBtn")
 
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
@@ -67,9 +69,6 @@ const editFortunes = () => {
             let fortuneSent = document.createElement('p')
             fortuneSent.textContent = data[i]
             editList.appendChild(fortuneSent)
-            let editFortuneBtn = document.createElement('button')
-            editFortuneBtn.textContent = "Remove This Fortune"
-            editList.appendChild(editFortuneBtn) 
             deleteFortuneBtn.addEventListener("click", deleteFortune)
         }
     })
@@ -95,11 +94,26 @@ const editFortunes = () => {
         editList.removeChild(deleteFortuneBtn)
         alert('All Fortunes Have been Deleted')
 }
+
+
+
+
 }
 
+const putFortune = () => {
+    switchFortune = repFortune.value
+    id = fortuneId.value
+    axios.put(`http://localhost:4000/api/fortunes/${id}`, {switchFortune}).then(res => {
+        data = res.data
+        console.log(data)
+    })
+    alert(`fortune ${id} was repalced with ${switchFortune}`)
+}
 
 
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getFortune)
 submitButton.addEventListener('click', suggestFortune)
 editFortunesBtn.addEventListener('click', editFortunes)
+replaceFortuneBtn.addEventListener('click', putFortune)
+
