@@ -33,6 +33,8 @@ module.exports = {
 
     },
     deleteFortunes: (req, res) => {
+        fortunes = []
+        console.log(fortunes)
         res.status(200).send(fortunes)
     },
     repalceFortune: (req, res) => {

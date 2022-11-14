@@ -85,7 +85,7 @@ const editFortunes = () => {
         axios.delete("http://localhost:4000/api/fortunes/").then (res => {
             // console.log(res.data)
            data = res.data
-          for (let i = 0; i < data.length * 2; i ++) {
+          for (let i = 0; i < 10; i ++) {
             editList.removeChild(editList.lastElementChild)
           }
             
